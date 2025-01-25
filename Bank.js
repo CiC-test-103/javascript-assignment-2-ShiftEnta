@@ -7,6 +7,9 @@ class Bank {
 
     // Add methods here:
     // Example: createAccount(name, initialDeposit)
+    createAccount(name,initialDeposit){
+        
+    }
 
 }
 
