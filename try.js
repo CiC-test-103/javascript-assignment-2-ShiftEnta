@@ -1,6 +1,7 @@
 class Bank {
   constructor() {
     this.accounts = []; // Stores all accounts in the bank
+   
   }
 
   // Add methods here:
@@ -15,8 +16,10 @@ class Bank {
   displayAcc() {
     console.log(this.accounts);
   }
+
 }
 
 let newacc = new Bank();
 newacc.createAccount("kofi", 100);
+newacc.deposit(500);
 newacc.displayAcc();
