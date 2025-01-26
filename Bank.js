@@ -31,8 +31,8 @@ class Account {
     } else {
       this.balance += amount;
       this.transactionHistory.push({
-        transactionType: "deposit",
-        amount: `${amount}`,
+        transactionType: "Deposit",
+        amount: amount,
       });
     }
   }
@@ -45,8 +45,8 @@ class Account {
     } else {
       this.balance -= amount;
       this.transactionHistory.push({
-        transactionType: "withdrawal",
-        amount: `${amount}`,
+        transactionType: "Withdrawal",
+        amount: amount,
       });
     }
   }
@@ -60,13 +60,13 @@ class Account {
       this.balance -= amount;
       recipientAccount.balance += amount;
       this.transactionHistory.push({
-        transactionType: "transfer",
-        amount: `${amount}`,
+        transactionType: "Transfer",
+        amount: amount,
         to: `${recipientAccount.name}`,
       });
       recipientAccount.transactionHistory.push({
         transactionType: "Received",
-        amount: `${amount}`,
+        amount: amount,
         from: `${this.name}`,
       });
     }
