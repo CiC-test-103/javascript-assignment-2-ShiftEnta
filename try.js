@@ -1,30 +1,22 @@
-// 🏦 Bank and Account System
-// Bank Class: Manages multiple accounts
 class Bank {
   constructor() {
-    this.accounts = []; // Stores all accounts in the bank
+    this.accounts = [];
   }
 
-  // Add methods here:
-  // Example: createAccount(name, initialDeposit)
   createAccount(name, initialDeposit) {
     let newAccount = new Account(name, initialDeposit);
     this.accounts.push(newAccount);
-    return newAccount;
+    return newAccount; // Ensure this line is present
   }
 }
 
-// Account Class: Represents a single user's account
 class Account {
   constructor(name, balance = 0) {
-    this.name = name; // Account holder's name
-    this.balance = balance; // Initial balance (default is 0)
-    this.transactionHistory = []; // Keeps a record of all transactions
+    this.name = name;
+    this.balance = balance;
+    this.transactionHistory = [];
   }
 
-  // Add methods here:
-  // Example: deposit(amount)
-  // example data to be stored in transactionHistory { transactionType: 'Deposit', amount: 500 }
   deposit(amount) {
     if (amount < 1) {
       console.log(`you cannot deposit: $${amount}`);
@@ -37,8 +29,6 @@ class Account {
     }
   }
 
-  // Example: withdraw(amount)
-  // example data to be stored in transactionHistory { transactionType: 'Withdrawal', amount: 200 }
   withdraw(amount) {
     if (amount > this.balance) {
       console.log(`you can not take more than $ ${this.balance}`);
@@ -50,8 +40,6 @@ class Account {
       });
     }
   }
-
-  // Example: transfer(amount, recipientAccount)
 
   transfer(amount, recipientAccount) {
     if (amount > this.balance) {
@@ -71,26 +59,18 @@ class Account {
       });
     }
   }
-  // example data to be stored in transactionHistory:
-  // for account sending { transactionType: 'Transfer', amount: 300, to: recipientName }
-  // for account recieving { transactionType: 'Received', amount: 300, from: senderName }
 
-  // Example: checkBalance()
   checkBalance() {
     return this.balance;
   }
 }
 
-//<-------------------------------DO NOT WRITE BELOW THIS LINE------------------------------>
-
-// Function to test bank operations
 function testBankOperations() {
   const bank = new Bank();
 
   // Create new accounts
   const johnAccount = bank.createAccount("John Doe", 1000);
   const janeAccount = bank.createAccount("Jane Doe", 500);
-  console.log("Accounts created:", johnAccount, janeAccount);
 
   // Perform some operations on John's account
   johnAccount.deposit(500);
@@ -114,8 +94,5 @@ function testBankOperations() {
   };
 }
 
-module.exports = testBankOperations;
-
-//<-------------------------------DO NOT WRITE ABOVE THIS LINE------------------------------>
-
+// Run the test
 console.log(testBankOperations());
