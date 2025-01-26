@@ -29,7 +29,11 @@ class Account {
     if (amount < 1) {
       console.log(`you cannot deposit: $${amount}`);
     } else {
-      return (this.balance += amount);
+      this.balance += amount;
+      this.transactionHistory.push({
+        transactionType: "deposit",
+        amount: `${amount}`,
+      });
     }
   }
 
@@ -39,7 +43,11 @@ class Account {
     if (amount > this.balance) {
       console.log(`you can not take more than $ ${this.balance}`);
     } else {
-      return (this.balance -= amount);
+      this.balance -= amount;
+      this.transactionHistory.push({
+        transactionType: "withdrawal",
+        amount: `${amount}`,
+      });
     }
   }
 
@@ -49,7 +57,18 @@ class Account {
     if (amount > this.balance) {
       console.log(`you cannot transfer more than $ ${this.balance}`);
     } else {
-      return (this.balance -= amount);
+      this.balance -= amount;
+      recipientAccount += amount;
+      this.transactionHistory.push({
+        transactionType: "transfer",
+        amount: `${amount}`,
+        to: `${recipientAccount}`,
+      });
+      this.transactionHistory.push({
+        transactionType: "Recerived",
+        amount: `${amount}`,
+        from: `${this.name}`,
+      });
     }
   }
   // example data to be stored in transactionHistory:
@@ -87,12 +106,12 @@ function testBankOperations() {
   console.log("Jane's balance:", janeFinalBalance);
 
   // Return balances for testing
-  //   return {
-  //     johnFinalBalance,
-  //     janeFinalBalance,
-  //     johnTransactionHistory: johnAccount.transactionHistory,
-  //     janeTransactionHistory: janeAccount.transactionHistory,
-  //   };
+  return {
+    johnFinalBalance,
+    janeFinalBalance,
+    johnTransactionHistory: johnAccount.transactionHistory,
+    janeTransactionHistory: janeAccount.transactionHistory,
+  };
 }
 
 module.exports = testBankOperations;
