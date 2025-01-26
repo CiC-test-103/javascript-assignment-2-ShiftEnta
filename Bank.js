@@ -10,7 +10,7 @@ class Bank {
   createAccount(name, initialDeposit) {
     let newAccount = new Account(name, initialDeposit);
     this.accounts.push(newAccount);
-    return newAccount;
+    // return newAccount;
   }
 }
 
