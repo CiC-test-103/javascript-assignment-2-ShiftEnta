@@ -58,14 +58,14 @@ class Account {
       console.log(`you cannot transfer more than $ ${this.balance}`);
     } else {
       this.balance -= amount;
-      recipientAccount += amount;
+      recipientAccount.balance += amount;
       this.transactionHistory.push({
         transactionType: "transfer",
         amount: `${amount}`,
-        to: `${recipientAccount}`,
+        to: `${recipientAccount.name}`,
       });
-      this.transactionHistory.push({
-        transactionType: "Recerived",
+      recipientAccount.transactionHistory.push({
+        transactionType: "Received",
         amount: `${amount}`,
         from: `${this.name}`,
       });
